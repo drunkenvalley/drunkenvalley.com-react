@@ -9,9 +9,9 @@ const Footer = ({ children = [] }: FooterProps): JSX.Element => {
 
   if (children) {
     ListItems = Children.toArray(children).map((child: any) =>
-          <li key={`footer-link-${child.props.href}`} className="ms-3">
-              {child}
-          </li>
+      <li key={`footer-link-${child.props.href}`} className="ms-3">
+          {child}
+      </li>
     )
   }
 
