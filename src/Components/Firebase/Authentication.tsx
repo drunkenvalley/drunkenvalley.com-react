@@ -2,14 +2,21 @@ import React from 'react'
 import { getAuth, GoogleAuthProvider, signInWithPopup, User } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
-import firebase from 'Components/Firebase'
+import GoogleGLogo from 'GoogleGLogo.svg'
+
+import firebase from 'Config/Firebase'
 
 const auth = getAuth(firebase)
 
-const LoggedIn = (user: User): JSX.Element => (
+const AuthLogo = (): JSX.Element => <object className='ms-1' data={GoogleGLogo} />
+
+const SignOut = (user: User): JSX.Element => (
   <div>
     Hello {user?.displayName}!
-    <button onClick={() => auth.signOut()}>Sign out</button>
+    <button className='btn btn-large btn-outline-danger d-flex flex-row align-items-center' onClick={() => auth.signOut()}>
+      Sign out
+      <AuthLogo />
+    </button>
   </div>
 )
 
@@ -20,7 +27,10 @@ const SignIn = (): JSX.Element => {
   }
 
   return (
-    <button onClick={SignInWithGoogle}>Log in with Google</button>
+    <button className='btn btn-large btn-outline-primary d-flex flex-row align-items-center' onClick={SignInWithGoogle}>
+      Sign in
+      <AuthLogo />
+    </button>
   )
 }
 
@@ -30,7 +40,7 @@ const Login = (): JSX.Element => {
   return (
     user
       // Logged in
-      ? <LoggedIn {...user} />
+      ? <SignOut {...user} />
 
       // Not logged in
       : <SignIn />
