@@ -1,49 +1,44 @@
-import React from 'react'
-import { getAuth, GoogleAuthProvider, signInWithPopup, User } from 'firebase/auth'
+import React, { ReactNode } from 'react'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 import GoogleGLogo from 'GoogleGLogo.svg'
-
 import firebase from 'Config/Firebase'
 
+// Sign-in data
 const auth = getAuth(firebase)
 
-const AuthLogo = (): JSX.Element => <object className='ms-1' data={GoogleGLogo} />
-
-const SignOut = (user: User): JSX.Element => (
-  <div>
-    Hello {user?.displayName}!
-    <button className='btn btn-large btn-outline-danger d-flex flex-row align-items-center' onClick={() => auth.signOut()}>
-      Sign out
-      <AuthLogo />
-    </button>
-  </div>
-)
-
-const SignIn = (): JSX.Element => {
-  const SignInWithGoogle = () => {
-    const provider = new GoogleAuthProvider()
-    signInWithPopup(auth, provider)
-  }
-
-  return (
-    <button className='btn btn-large btn-outline-primary d-flex flex-row align-items-center' onClick={SignInWithGoogle}>
-      Sign in
-      <AuthLogo />
-    </button>
-  )
+const SignInWithGoogle = () => {
+  const provider = new GoogleAuthProvider()
+  signInWithPopup(auth, provider)
 }
+
+const SignOut = () => auth.signOut()
+
+// Function component
+const GoogleButton = ({ children, onClick, src = GoogleGLogo }: { children?: ReactNode, onClick?: any, src?: string }): JSX.Element => (
+  <button className='btn btn-link link-light d-flex flex-row align-items-center bg-dark border border-secondary rounded-pill px-2 text-decoration-none' onClick={() => onClick()}>
+    {children}
+    <img src={src} className={`${children ? 'ms-2' : ''} ${src ? 'rounded-circle' : ''} pe-none inline-image`} />
+  </button>
+)
 
 const Login = (): JSX.Element => {
   const [user] = useAuthState(auth)
+  const image: string = user?.photoURL || ''
 
   return (
-    user
-      // Logged in
-      ? <SignOut {...user} />
+    <div className='d-flex flex-row align-items-center'>
+      {user
+        // Logged in
+        ? <GoogleButton onClick={SignOut} src={image}>
+            <span className="ms-1">{user.displayName}</span>
+          </GoogleButton>
 
-      // Not logged in
-      : <SignIn />
+        // Not logged in
+        : <GoogleButton onClick={SignInWithGoogle} />
+      }
+    </div>
   )
 }
 

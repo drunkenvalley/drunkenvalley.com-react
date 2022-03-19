@@ -14,3 +14,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.z-bump {
+  z-index: 1;
+}
+
+.bi.bi-lg {
+  font-size: 1.5em;
+}
+
+.inline-image {
+  height: 1.5em;
+}
+
+.rounded-top-end-0 {
+  border-top-right-radius: 0px !important;
+}
+
+.rounded-end-0 {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
