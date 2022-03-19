@@ -15,6 +15,11 @@ code {
     monospace;
 }
 
+.editor-bg {
+  background-image: radial-gradient(circle, #ddd 1px, rgba(0,0,0,0) 1px);
+  background-size: 1rem 1rem;
+}
+
 .z-bump {
   z-index: 1;
 }

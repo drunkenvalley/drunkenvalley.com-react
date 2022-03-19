@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-key */
 import React, { Children, ReactElement, ReactNode } from 'react'
 
-export interface NavItemsProps {
+export interface FooterItemsProps {
     children?: ReactElement | ReactNode[]
 }
 
-const NavItems = ({ children = [] }: NavItemsProps): JSX.Element => {
+const FooterItems = ({ children = [] }: FooterItemsProps): JSX.Element => {
   let ListItems
 
   if (children) {
@@ -17,12 +17,10 @@ const NavItems = ({ children = [] }: NavItemsProps): JSX.Element => {
   }
 
   return (
-    <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul className="navbar-nav">
-            {ListItems}
-        </ul>
-    </div>
+    <ul className="nav col-md-4 justify-content-center list-unstyled d-flex">
+      {ListItems}
+    </ul>
   )
 }
 
-export default NavItems
+export default FooterItems

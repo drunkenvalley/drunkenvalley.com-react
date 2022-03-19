@@ -5,6 +5,7 @@ module.exports = {
     jest: true
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
     'standard'
   ],
@@ -25,5 +26,10 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'no-undef': 'off'
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 }

@@ -28,7 +28,7 @@ const Login = (): JSX.Element => {
   const image: string = user?.photoURL || ''
 
   return (
-    <div className='d-flex flex-row align-items-center'>
+    <div className='col-md-4 d-flex flex-row align-items-center justify-content-end'>
       {user
         // Logged in
         ? <GoogleButton onClick={SignOut} src={image}>
