@@ -1,3 +1,3 @@
 import React from 'react'
 
-import firebase from 'Firebase'
+import firebase from 'Components/Firebase'
