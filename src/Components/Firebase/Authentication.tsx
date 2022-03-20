@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
-import GoogleGLogo from 'GoogleGLogo.svg'
+import GoogleGLogo from 'Assets/GoogleGLogo.svg'
 import firebase from 'Config/Firebase'
 
 // Sign-in data
