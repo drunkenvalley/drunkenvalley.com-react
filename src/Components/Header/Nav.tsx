@@ -7,7 +7,7 @@ export interface HeaderProps {
 const Header = ({ children }: HeaderProps): JSX.Element =>
     <nav id="navbar" className="navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid">
-            <a className="navbar-brand" href="#">💾 drunkenvalley.com</a>
+            <span className="navbar-brand">🔓 drunkenvalley.com</span>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>

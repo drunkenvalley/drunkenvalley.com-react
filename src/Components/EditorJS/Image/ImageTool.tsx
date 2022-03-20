@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Image from './Image'
+import ImageEditor from './ImageEditor'
 
 interface ImageProps {
   api: any,
@@ -53,7 +53,7 @@ export default class ImageTool {
     ReactDOM.render(
       (
         <>
-          <Image className='rounded shadow' editing onChange={onDataChange} src={this.data.src || ''} />
+          <ImageEditor className='rounded shadow' editing onChange={onDataChange} src={this.data.src || ''} />
         </>
       ),
       rootNode)
