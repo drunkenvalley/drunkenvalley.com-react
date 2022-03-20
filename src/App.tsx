@@ -1,12 +1,9 @@
 import React from 'react'
 import './Styles/App.scss'
 
-import Nav from 'Components/Header/Nav'
-import NavItems from 'Components/Header/NavItems'
+import { Nav, NavItems } from 'Components/Header'
+import { Footer, FooterItems } from 'Components/Footer'
 import Authentication from 'Components/Firebase/Authentication'
-
-import Footer from 'Components/Footer/Footer'
-import FooterItems from 'Components/Footer/FooterItems'
 
 function App () {
   return (
