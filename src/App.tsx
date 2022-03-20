@@ -4,6 +4,7 @@ import './Styles/App.scss'
 import { Nav, NavItems } from 'Components/Header'
 import { Footer, FooterItems } from 'Components/Footer'
 import Authentication from 'Components/Firebase/Authentication'
+import { Editor, ImageTool } from 'Components/EditorJS'
 
 function App () {
   return (
@@ -15,9 +16,7 @@ function App () {
       </Nav>
 
       <div className="flex-grow-1 p-3">
-        <div className="card">
-          <div className="card-body editor-bg"></div>
-        </div>
+        <Editor tools={{ image: ImageTool }} />
       </div>
 
       <Footer>

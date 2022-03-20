@@ -15,6 +15,7 @@ export class Editor extends Component<Props, State> {
     const { tools } = this.props
 
     const config: EditorConfig = {
+      minHeight: 0,
       tools
     }
 
@@ -24,6 +25,8 @@ export class Editor extends Component<Props, State> {
   }
 
   render () {
-    return <div id="editorjs" />
+    return <div id="editorjs" className='bg-light editor-bg rounded container p-4' />
   }
 }
+
+export default Editor

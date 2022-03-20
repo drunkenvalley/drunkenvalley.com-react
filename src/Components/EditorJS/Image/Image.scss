@@ -1,0 +1,12 @@
+.editorjs.imageblock {
+    background: url('~Assets/card-image.svg') no-repeat center center;
+    background-size: 60px;
+    min-height: 96px;
+    min-width: 128px;
+
+    &.editing {
+        max-height: 300px;
+        max-width: 100%;
+        object-fit: scale-down;
+    }
+}

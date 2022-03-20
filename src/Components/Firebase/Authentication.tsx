@@ -17,7 +17,7 @@ const SignOut = () => auth.signOut()
 
 // Function component
 const GoogleButton = ({ children, onClick, src = GoogleGLogo }: { children?: ReactNode, onClick?: any, src?: string }): JSX.Element => (
-  <button className='btn btn-link link-light d-flex flex-row align-items-center bg-dark border border-secondary rounded-pill px-2 text-decoration-none' onClick={() => onClick()}>
+  <button className='btn btn-link link-light d-flex flex-row align-items-center bg-dark border border-secondary rounded-pill p-1 text-decoration-none' onClick={() => onClick()}>
     {children}
     <img src={src} className={`${children ? 'ms-2' : ''} ${src ? 'rounded-circle' : ''} pe-none inline-image`} />
   </button>
@@ -32,7 +32,7 @@ const Login = (): JSX.Element => {
       {user
         // Logged in
         ? <GoogleButton onClick={SignOut} src={image}>
-            <span className="ms-1">{user.displayName}</span>
+            <span className="ms-2">{user.displayName}</span>
           </GoogleButton>
 
         // Not logged in
