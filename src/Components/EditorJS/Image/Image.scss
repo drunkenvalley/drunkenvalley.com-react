@@ -6,7 +6,41 @@
 
     &.editing {
         max-height: 300px;
-        max-width: 100%;
+        max-width: 90vw;
         object-fit: scale-down;
+    }
+
+    &.splash {
+        object-fit: cover;
+        width: 100vw;
+    }
+
+    &.polaroid {
+        object-fit: cover;
+        aspect-ratio: 4/3;
+        width: 100%;
+        max-height: fit-content;
+        border: 1rem white solid
+    }
+
+    &.fancy {
+        object-fit: cover;
+        width: 100%;
+        margin-left: calc(50vw - 100%);
+        border-left: 1rem var(--bs-primary) solid;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    &.align-top {
+        object-position: top;
+    }
+
+    &.align-middle {
+        object-position: center;
+    }
+
+    &.align-bottom {
+        object-position: bottom;
     }
 }

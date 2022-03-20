@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom'
 
 import ImageEditor from './ImageEditor'
 
-interface ImageProps {
+interface ImageToolData {
+  align?: number,
+  src?: string,
+  type?: string
+}
+
+interface ImageToolProps {
   api: any,
   config: any,
-  data: any,
+  data: ImageToolData,
   readOnly: Boolean
 }
 
 export default class ImageTool {
-  api: any
-  data: { src: string }
-  readOnly: Boolean
+  data: ImageToolData
   nodes: { holder?: HTMLDivElement }
 
   static get toolbox () {
@@ -24,17 +28,16 @@ export default class ImageTool {
   }
 
   static get isReadOnlySupported () {
-    return true
+    return false
   }
 
-  constructor ({ data, config, api, readOnly }: ImageProps) {
-    this.api = api
-    this.readOnly = readOnly
-    this.data = {
-      src: ''
-    }
-
+  constructor (props: ImageToolProps) {
+    this.data = props.data
     this.nodes = {}
+  }
+
+  onDataChange = (newData: ImageToolData) => {
+    this.data = { ...newData }
   }
 
   render () {
@@ -44,16 +47,10 @@ export default class ImageTool {
 
     this.nodes.holder = rootNode
 
-    const onDataChange = (newData: any) => {
-      this.data = {
-        ...newData
-      }
-    }
-
     ReactDOM.render(
       (
         <>
-          <ImageEditor className='rounded shadow' editing onChange={onDataChange} src={this.data.src || ''} />
+          <ImageEditor className='rounded shadow' onChange={this.onDataChange} data={this.data} />
         </>
       ),
       rootNode)
