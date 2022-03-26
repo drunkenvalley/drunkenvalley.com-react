@@ -1,64 +1,32 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { ReactElement, ReactNode } from 'react'
+import BlockTool from '../Utils/BlockTool'
 
-import ImageEditor from './ImageEditor'
-
-interface ImageToolData {
-  align?: number,
-  src?: string,
-  type?: string
+interface State {
+  src?: string
 }
 
-interface ImageToolProps {
-  api: any,
-  config: any,
-  data: ImageToolData,
-  readOnly: Boolean
+interface Props extends State {
+  children?: ReactElement | ReactNode[]
 }
 
-export default class ImageTool {
-  data: ImageToolData
-  nodes: { holder?: HTMLDivElement }
+export default class ImageTool extends BlockTool<Props, State> {
+  constructor (props: Props) {
+    super(props)
 
-  static get toolbox () {
-    return {
-      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16"><path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/><path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/></svg>',
+    const icon = (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-file-image" viewBox="0 0 16 16">
+        <path d="M8.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v8l-2.083-2.083a.5.5 0 0 0-.76.063L8 11 5.835 9.7a.5.5 0 0 0-.611.076L3 12V2z"/>
+      </svg>
+    )
+
+    ImageTool._tool = {
+      icon,
       title: 'Image'
     }
   }
 
-  static get isReadOnlySupported () {
-    return false
-  }
-
-  constructor (props: ImageToolProps) {
-    this.data = props.data
-    this.nodes = {}
-  }
-
-  onDataChange = (newData: ImageToolData) => {
-    this.data = { ...newData }
-  }
-
-  render () {
-    const rootNode = document.createElement('div')
-    const wrapperClassNames = 'd-flex flex-column align-items-center mb-3 border rounded p-3'
-    rootNode.className = wrapperClassNames
-
-    this.nodes.holder = rootNode
-
-    ReactDOM.render(
-      (
-        <>
-          <ImageEditor className='rounded shadow' onChange={this.onDataChange} data={this.data} />
-        </>
-      ),
-      rootNode)
-
-    return this.nodes.holder
-  }
-
-  save () {
-    return this.data
-  }
+  template = (): JSX.Element => (
+    <img className='bg-white shadow w-100' style={{ minHeight: 32 }} {...this.state} />
+  )
 }

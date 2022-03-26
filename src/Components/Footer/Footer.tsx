@@ -1,7 +1,7 @@
 import React, { ReactElement, ReactNode } from 'react'
 
 interface FooterProps {
-    children?: ReactElement | ReactNode[]
+  children?: ReactElement | ReactNode[]
 }
 
 const Footer = ({ children = [] }: FooterProps): JSX.Element => (

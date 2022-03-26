@@ -32,8 +32,8 @@ const Login = (): JSX.Element => {
       {user
         // Logged in
         ? <GoogleButton onClick={SignOut} src={image}>
-            <span className="ms-2">{user.displayName}</span>
-          </GoogleButton>
+          <span className="ms-2">{user.displayName}</span>
+        </GoogleButton>
 
         // Not logged in
         : <GoogleButton onClick={SignInWithGoogle} />

@@ -5,6 +5,7 @@ import { Nav, NavItems } from 'Components/Header'
 import { Footer, FooterItems } from 'Components/Footer'
 import Authentication from 'Components/Firebase/Authentication'
 import { Editor, ImageTool } from 'Components/EditorJS'
+import GridTool from 'Components/EditorJS/Grid/GridTool'
 
 function App () {
   return (
@@ -16,7 +17,7 @@ function App () {
       </Nav>
 
       <div className="flex-grow-1 p-3">
-        <Editor tools={{ image: ImageTool }} />
+        <Editor tools={{ grid: GridTool, image: ImageTool }} />
       </div>
 
       <Footer>

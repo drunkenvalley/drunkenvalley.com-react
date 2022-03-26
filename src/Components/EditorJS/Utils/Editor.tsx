@@ -1,16 +1,16 @@
 import EditorJS, { EditorConfig, ToolConstructable, ToolSettings } from '@editorjs/editorjs'
 import React, { Component } from 'react'
 
-export interface Props {
-    tools?: {
-        [toolName: string]: ToolConstructable | ToolSettings<any>
-    }
+interface EditorProps {
+  tools?: {
+    [toolName: string]: ToolConstructable | ToolSettings<any>
+  }
 }
-interface State {
-    editor: EditorJS
+interface EditorState {
+  editor: EditorJS
 }
 
-export class Editor extends Component<Props, State> {
+export class Editor extends Component<EditorProps, EditorState> {
   componentDidMount () {
     const { tools } = this.props
 

@@ -2,7 +2,7 @@
 import React, { Children, ReactElement, ReactNode } from 'react'
 
 export interface FooterItemsProps {
-    children?: ReactElement | ReactNode[]
+  children?: ReactElement | ReactNode[]
 }
 
 const FooterItems = ({ children = [] }: FooterItemsProps): JSX.Element => {
@@ -10,9 +10,9 @@ const FooterItems = ({ children = [] }: FooterItemsProps): JSX.Element => {
 
   if (children) {
     ListItems = Children.toArray(children).map((child: any) =>
-        <li key={`link-${child.props.href}`} className="nav-item">
-            {child}
-        </li>
+      <li key={`link-${child.props.href}`} className="nav-item">
+        {child}
+      </li>
     )
   }
 

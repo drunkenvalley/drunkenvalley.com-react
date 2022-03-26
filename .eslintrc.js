@@ -22,6 +22,11 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    indent: 'off',
+    '@typescript-eslint/indent': [
+      'warn',
+      2
+    ],
     'no-unused-vars': 'warn',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
