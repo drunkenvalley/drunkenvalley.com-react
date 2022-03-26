@@ -25,7 +25,7 @@ export class Editor extends Component<EditorProps, EditorState> {
   }
 
   render () {
-    return <div id="editorjs" className='bg-light editor-bg rounded container p-4' />
+    return <div id="editorjs" className='bg-light border shadow-sm editor-bg container-fluid mb-4 p-4' />
   }
 }
 

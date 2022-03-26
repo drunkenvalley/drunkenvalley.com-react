@@ -1,4 +1,4 @@
-import { Component, ReactElement } from 'react'
+import React, { Component, ReactElement } from 'react'
 import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
 
@@ -11,7 +11,6 @@ abstract class BaseBlock<P = { children?: any }, S = {}> extends Component<P, S>
   protected static _tool: IToolbox
   protected static _readonly: boolean
   protected _el!: HTMLElement
-  template!: () => JSX.Element
 
   static get isReadOnlySupported () {
     return this._readonly
@@ -32,8 +31,8 @@ abstract class BaseBlock<P = { children?: any }, S = {}> extends Component<P, S>
     return this._el
   }
 
-  render = (): HTMLElement => {
-    ReactDOM.render(this.template(), this.element)
+  render (children: ReactElement = <></>): HTMLElement {
+    ReactDOM.render(children, this.element)
 
     return this.element
   }

@@ -1,5 +1,4 @@
 import React from 'react'
-import './Styles/App.scss'
 
 import { Nav, NavItems } from 'Components/Header'
 import { Footer, FooterItems } from 'Components/Footer'
@@ -16,7 +15,7 @@ function App () {
         </NavItems>
       </Nav>
 
-      <div className="flex-grow-1 p-3">
+      <div className="flex-grow-1">
         <Editor tools={{ grid: GridTool, image: ImageTool }} />
       </div>
 
