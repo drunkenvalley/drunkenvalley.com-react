@@ -1,18 +1,23 @@
 import React from 'react'
 
-type Color = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark' | ''
-type Size = 'fluid' | 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | ''
+export const Colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark', ''] as const
 
-interface ContainerProps<T> {
+type Color = typeof Colors[number]
+type Breakpoint = 'fluid' | 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | ''
+
+export interface IContainer {
   background?: Color,
-  children: T,
   color?: Color,
-  width?: Size
+  width?: Breakpoint
+}
+
+interface Props<T> extends IContainer {
+  children?: T
 }
 
 const getClass = (prop: string = '', prefix: string, fallback: string) => prop ? [prefix, prop].join('-') : fallback
 
-const Container = <T extends {}>({ children, background, color, width }: ContainerProps<T>) => (
+export const Container = <T extends {}>({ children, background, color, width }: Props<T>) => (
   <section className={ `${getClass(background, 'bg', '')} ${getClass(color, 'text', '')}` }>
     <article className={ `${getClass(width, 'container', 'container')}` }>
       {children}
