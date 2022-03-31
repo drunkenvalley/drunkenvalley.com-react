@@ -1,13 +1,13 @@
-import EditorJS, { EditorConfig, ToolConstructable, ToolSettings } from '@editorjs/editorjs'
+import EditorJs, { EditorConfig, ToolConstructable, ToolSettings } from '@editorjs/editorjs'
 import React, { Component } from 'react'
 
 interface EditorProps {
   tools?: {
     [toolName: string]: ToolConstructable | ToolSettings<any>
-  }
+  } | undefined
 }
 interface EditorState {
-  editor: EditorJS
+  editor: EditorJs
 }
 
 export class Editor extends Component<EditorProps, EditorState> {
@@ -20,7 +20,7 @@ export class Editor extends Component<EditorProps, EditorState> {
     }
 
     this.setState({
-      editor: new EditorJS(config)
+      editor: new EditorJs(config)
     })
   }
 

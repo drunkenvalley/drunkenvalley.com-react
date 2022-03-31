@@ -8,7 +8,6 @@ interface Props extends IContainer {
 
 const ImageEditor = ({ background, children, color, onChange }: Props) => (
   <aside className='w-100 mb-3 d-flex flex-row align-items-center justify-content-center'>
-    {children}
     <ContainerEditor onChange={onChange} />
   </aside>
 )

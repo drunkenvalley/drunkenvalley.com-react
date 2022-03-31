@@ -3,7 +3,7 @@ import React from 'react'
 import { Nav, NavItems } from 'Components/Header'
 import { Footer, FooterItems } from 'Components/Footer'
 import Authentication from 'Components/Firebase/Authentication'
-import { Editor } from 'Components/EditorJS'
+import { Editor, Image } from 'Components/EditorJS'
 
 function App () {
   return (
@@ -15,7 +15,7 @@ function App () {
       </Nav>
 
       <div className="flex-grow-1">
-        <Editor tools={{}} />
+        <Editor tools={{ image: Image }} />
       </div>
 
       <Footer>
