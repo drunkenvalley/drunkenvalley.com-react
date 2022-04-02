@@ -14,8 +14,13 @@ export interface EditorProps extends EditorState {
 export function ImageTool ({ callback, ...props }: EditorProps) {
   const [state, setState] = useState(props)
 
+  console.log(state)
+
   const onChange = <T extends {}, F extends () => void>(newData: T, callback?: F): void => {
-    setState({ ...newData })
+    setState({ ...state, ...newData })
+
+    console.log(state)
+
     callback && callback()
   }
 

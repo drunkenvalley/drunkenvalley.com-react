@@ -5,14 +5,14 @@ interface Props extends IContainer {
   onChange: Function
 }
 
-const Dot = ({ item }: { item: string }) => (
-  <article className={`ratio ratio-1x1 rounded-pill bg-${item} border`} style={{ height: '1.5rem', width: '1.5rem' }} />
-)
+const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
 
 const ColorListItems = (name: string, onChange: Function) => Colors.map(item => (
   <li key={`${name}-${item}`}>
     <button className="dropdown-item" onClick={() => onChange({ [name]: item })}>
-      <Dot item={item} />
+      <i className={`bi bi-diamond-fill me-2 ${item ? `text-${item}` : ''}`}></i> {capitalize(item || 'unset')}
     </button>
   </li>
 ))

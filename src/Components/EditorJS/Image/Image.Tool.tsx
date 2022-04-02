@@ -3,6 +3,14 @@ import { render } from 'react-dom'
 import { renderToString } from 'react-dom/server'
 import { ImageTool, EditorState } from './Image.ReactTool'
 
+interface EditorProps extends EditorState {
+  api?: any
+  block?: any
+  config?: any
+  data?: any
+  readOnly?: boolean
+}
+
 export default class Image {
   static get toolbox () {
     return {
@@ -18,8 +26,10 @@ export default class Image {
 
   state: EditorState
 
-  constructor (props: EditorState) {
-    this.state = { ...props }
+  constructor (props: EditorProps) {
+    const { api, block, config, data, readOnly, ...filteredProps } = props
+
+    this.state = { ...filteredProps }
   }
 
   onChange = <T extends {}>(newState: T, callback?: () => void): void => {
